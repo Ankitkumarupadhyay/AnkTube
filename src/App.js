@@ -1,43 +1,39 @@
-import React from 'react';
-import './App.css';
-import Head from './components/Head';
-import Body from "./components/Body"
-import { Provider } from 'react-redux';
-import store from './utils/store';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MainContainer from './components/MainContainer';
-import VideoPage from './components/VideoPage';
-
-
+import React from "react";
+import "./App.css";
+import Head from "./components/Head";
+import Body from "./components/Body";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainContainer from "./components/MainContainer";
+import VideoPage from "./components/VideoPage";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element : <Body />,
-    children : [
+    element: <Body />,
+    children: [
       {
-        path:"/",
-        element:<MainContainer />
+        path: "/",
+        element: <MainContainer />,
       },
       {
-        path:'/watch',
-        element : <VideoPage />
-      }
-    ]
-  }
-])
-
+        path: "/watch",
+        element: <VideoPage />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  return <>
-    <Provider store={store} >
-      <Head />
-      <RouterProvider router={appRouter} /> 
-    </Provider>
-    
-  </>
+  return (
+    <>
+      <Provider store={store}>
+        <Head />
+        <RouterProvider router={appRouter} />
+      </Provider>
+    </>
+  );
 }
-
-
 
 export default App;
