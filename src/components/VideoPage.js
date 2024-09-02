@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/sidebarSlice";
 import { useSearchParams } from "react-router-dom";
+import { API_KEY, videoInfo } from "../utils/constants";
 
 const VideoPage = () => {
-  // const params = useParams();
-  // console.log(params);
-
+  const [videoInfo, setVideoInfo] = useState([]);
   const [searchParams] = useSearchParams();
   // console.log(searchParams.get("v"));
 
@@ -14,7 +13,21 @@ const VideoPage = () => {
 
   useEffect(() => {
     dispatch(closeMenu());
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=" +
+        searchParams.get("v") +
+        "&key=" +
+        API_KEY
+    );
+    const json = await data.json();
+
+    setVideoInfo(json?.items[0]);
+  };
+  // console.log(videoInfo);
 
   return (
     <div className="p-3 fixed">
@@ -29,7 +42,8 @@ const VideoPage = () => {
         allowFullScreen
         aria-hidden="false"
       ></iframe>
-      {/* <iframe width="560" height="315" src={"https://www.youtube.com/embed/" + params} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+      <h1 className="font-semibold text-2xl">{videoInfo?.snippet?.localized?.title}</h1>
+      <h1>{videoInfo?.snippet?.channelTitle}</h1>
     </div>
   );
 };

@@ -84,6 +84,7 @@ const Head = () => {
                 <li
                   key={e}
                   className="py-1 pl-5 hover:bg-gray-100 cursor-pointer shadow-sm"
+                  
                 >
                   {e}
                 </li>
