@@ -20,6 +20,7 @@ const VideoCard = ({ info }) => {
           ? `${(statistics?.viewCount / 1000000).toPrecision(2)}M views`
           : `${(statistics?.viewCount / 1000).toFixed(0)}K views`}
       </h2>
+
     </div>
   );
 };

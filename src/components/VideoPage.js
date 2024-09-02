@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/sidebarSlice";
 import { useSearchParams } from "react-router-dom";
 import { API_KEY, videoInfo } from "../utils/constants";
+import LiveChat from "./LiveChat";
 
 const VideoPage = () => {
   const [videoInfo, setVideoInfo] = useState([]);
@@ -30,20 +31,31 @@ const VideoPage = () => {
   // console.log(videoInfo);
 
   return (
-    <div className="p-3 fixed">
-      <iframe
-        width="1000"
-        height="500"
-        src={"https://www.youtube.com/embed/" + searchParams.get("v")}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-        aria-hidden="false"
-      ></iframe>
-      <h1 className="font-semibold text-2xl">{videoInfo?.snippet?.localized?.title}</h1>
-      <h1>{videoInfo?.snippet?.channelTitle}</h1>
+    <div className="p-3  border border-red-600 w-[100%]   ">
+      <div className="border border-green-700 w-[100%] lg:w-[67%] ">
+        <iframe
+          width="100%"
+          height="500"
+          src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+          aria-hidden="false"
+        ></iframe>
+        <div className="details pt-5 px-3 ">
+          <h1 className="font-semibold  text-2xl  whitespace-nowrap overflow-hidden text-ellipsis ">
+            {videoInfo?.snippet?.localized?.title}
+          </h1>
+          <h1 className="font-medium my-2  text-lg  whitespace-nowrap overflow-hidden text-ellipsis">
+            {videoInfo?.snippet?.channelTitle}
+          </h1>
+        </div>
+        <div className="w-[100%] border   border-yellow-500 h-[500px] ">
+          <LiveChat  />
+        </div>
+      </div>
     </div>
   );
 };
