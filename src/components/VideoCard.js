@@ -1,9 +1,9 @@
 import React from "react";
 
 const VideoCard = ({ info }) => {
-  // console.log(info)
+  console.log(info);
   const { snippet, statistics } = info;
-  const { channelTitle, localized, thumbnails } = snippet;
+  const { channelTitle, localized, thumbnails, publishedAt } = snippet;
   return (
     <div className="p-3 m-3 mx-auto font-medium   w-80   shadow-xl">
       <img
@@ -20,7 +20,7 @@ const VideoCard = ({ info }) => {
           ? `${(statistics?.viewCount / 1000000).toPrecision(2)}M views`
           : `${(statistics?.viewCount / 1000).toFixed(0)}K views`}
       </h2>
-
+      <h2>{publishedAt}</h2>
     </div>
   );
 };

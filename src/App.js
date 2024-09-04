@@ -21,6 +21,7 @@ const appRouter = createBrowserRouter([
         path: "/watch",
         element: <VideoPage />,
       },
+      
     ],
   },
 ]);

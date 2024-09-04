@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/sidebarSlice";
 import { YT_SUGGESTION_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { videoList } from "../utils/VideoListSlice";
+import { CiSearch } from "react-icons/ci";
+import { Link } from "react-router-dom";
+
 
 const Head = () => {
   const [searchQuerry, setSearchQuerry] = useState("");
@@ -42,6 +46,27 @@ const Head = () => {
   };
   // console.log(suggestions)
 
+  const handleSearchClick = async () => {
+    const data = await fetch(
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchQuerry}&regionCode=IN&order=viewCount&key=AIzaSyBL72bDjA77VV3eYrZQDg0UIXrpimFOGDU`
+    );
+
+    const json = await data.json();
+    // console.log(json);
+    dispatch(videoList(json.items));
+  };
+  const handleSuggestionClick = async (e) => {
+    console.log(e);
+    setSearchQuerry(e);
+    // const data = await fetch(
+    //   `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchQuerry}&regionCode=IN&key=AIzaSyBL72bDjA77VV3eYrZQDg0UIXrpimFOGDU`
+    // );
+
+    // const json = await data.json();
+    // // console.log(json);
+    // dispatch(videoList(json.items));
+  };
+
   const handleSidebar = () => {
     dispatch(toggleMenu());
   };
@@ -63,18 +88,21 @@ const Head = () => {
         />
       </div>
       <div className="middile col-span-10 ">
-        <div className=" sm:{flex}   text-center   ">
+        <div className=" sm:{flex} h-[35px]  items-center   text-center   ">
           <input
             type="text"
             value={searchQuerry}
             onChange={(e) => setSearchQuerry(e.target.value)}
             placeholder="Search"
-            className="border border-black rounded-l-2xl  p-1 px-4 w-1/2"
+            className="border h-[35px] border-black rounded-l-2xl   px-4 w-1/2"
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setShowSuggestions(false)}
           />
-          <button className="p-1 border border-black rounded-r-2xl bg-gray-300 px-2">
-            Search
+          <button
+            // onClick={() => handleSearchClick()}
+            className=" relative top-[10px]  px-4 border h-[35px] border-black rounded-r-2xl bg-gray-300 "
+          >
+            <CiSearch size="24px" />
           </button>
         </div>
         {showSuggestions && (
@@ -84,7 +112,6 @@ const Head = () => {
                 <li
                   key={e}
                   className="py-1 pl-5 hover:bg-gray-100 cursor-pointer shadow-sm"
-                  
                 >
                   {e}
                 </li>

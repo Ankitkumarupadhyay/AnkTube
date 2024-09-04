@@ -9,3 +9,4 @@ export const YT_SUGGESTION_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
   // + "&key=" + API_KEY
+  // "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=cricket&regionCode=IN&key=AIzaSyBL72bDjA77VV3eYrZQDg0UIXrpimFOGDU"

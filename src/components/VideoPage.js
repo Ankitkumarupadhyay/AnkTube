@@ -3,12 +3,12 @@ import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/sidebarSlice";
 import { useSearchParams } from "react-router-dom";
 import { API_KEY, videoInfo } from "../utils/constants";
-import LiveChat from "./LiveChat";
+import CommentSection from "./CommentSection";
 
 const VideoPage = () => {
   const [videoInfo, setVideoInfo] = useState([]);
   const [searchParams] = useSearchParams();
-  // console.log(searchParams.get("v"));
+  console.log(searchParams.get("v"));
 
   const dispatch = useDispatch();
 
@@ -53,7 +53,7 @@ const VideoPage = () => {
           </h1>
         </div>
         <div className="w-[100%] border   border-yellow-500 h-[500px] ">
-          <LiveChat  />
+          <CommentSection />
         </div>
       </div>
     </div>

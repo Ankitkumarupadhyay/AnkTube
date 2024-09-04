@@ -1,28 +1,29 @@
-import { useState, useEffect } from "react";
+import {  useEffect } from "react";
 import { API_KEY } from "./constants";
+import { useDispatch } from "react-redux";
+import { videoList } from "./VideoListSlice";
 
 const useVideoInfo = (category) => {
-  // console.log(category)
-  const [videoList, setVideoList] = useState([]);
+  const dispatch = useDispatch()
+  // const [videoList, setVideoList] = useState([]);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    // const data = await fetch(
-    //   "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=iphone&regionCode=IN&key=" +
-    //     API_KEY
-    // );
+    
     const data = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=` +
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&order=viewCount&regionCode=IN&key=` +
         API_KEY
     );
     const json = await data.json();
-    // console.log(json);
-    setVideoList(json.items);
+    // console.log(json.items)
+    
+    // setVideoList(json.items);
+    dispatch(videoList(json.items))
   };
-  return videoList;
+  // return videoList;
 };
 
 export default useVideoInfo;
