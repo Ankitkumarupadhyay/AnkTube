@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/sidebarSlice";
 import { useSearchParams } from "react-router-dom";
-import { API_KEY, videoInfo } from "../utils/constants";
+import { API_KEY } from "../utils/constants";
 import CommentSection from "./CommentSection";
 
 const VideoPage = () => {
   const [videoInfo, setVideoInfo] = useState([]);
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get("v"));
+  // console.log(searchParams.get("v"));
 
   const dispatch = useDispatch();
 

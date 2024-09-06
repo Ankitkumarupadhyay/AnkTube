@@ -9,7 +9,7 @@ const VideoListSlice = createSlice({
     reducers : {
         videoList : (state,action)=>{
             
-            // state.allVideos.push(action.payload);
+           
             state.allVideos = action.payload;
             // console.log(state.allVideos)
         }

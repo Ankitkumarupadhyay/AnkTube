@@ -6,8 +6,6 @@ import { YT_SUGGESTION_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import { videoList } from "../utils/VideoListSlice";
 import { CiSearch } from "react-icons/ci";
-import { Link } from "react-router-dom";
-
 
 const Head = () => {
   const [searchQuerry, setSearchQuerry] = useState("");
@@ -99,7 +97,7 @@ const Head = () => {
             onBlur={() => setShowSuggestions(false)}
           />
           <button
-            // onClick={() => handleSearchClick()}
+            onClick={() => handleSearchClick()}
             className=" relative top-[10px]  px-4 border h-[35px] border-black rounded-r-2xl bg-gray-300 "
           >
             <CiSearch size="24px" />

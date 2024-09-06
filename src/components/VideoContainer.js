@@ -8,7 +8,7 @@ const VideoContainer = () => {
  useVideoInfo()
   // const videoList = useVideoInfo();
   const videoList = useSelector(store=> store.videoList.allVideos)
-
+// console.log(videoList)
 
   if (videoList.length === 0) return <h1>loading</h1>;
 
