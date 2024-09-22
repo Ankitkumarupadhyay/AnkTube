@@ -24,7 +24,7 @@ const VideoContainer = () => {
           className="mx-auto"
           key={video?.id}
         >
-          <VideoCard info={video} />
+          <VideoCard info={video} key={video?.id} />
           {/* {video?.kind === "youtube#searchResult" ? console.log(video?.id?.videoId)  : console.log(video?.id)} */}
           
         </Link>

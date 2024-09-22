@@ -15,6 +15,7 @@ const VideoPage = () => {
   useEffect(() => {
     dispatch(closeMenu());
     fetchData();
+    
   }, []);
 
   const fetchData = async () => {
@@ -28,7 +29,8 @@ const VideoPage = () => {
 
     setVideoInfo(json?.items[0]);
   };
-  // console.log(videoInfo);
+
+
 
   return (
     <div className="p-3  border border-red-600 w-[100%]   ">
@@ -40,17 +42,21 @@ const VideoPage = () => {
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          autoPlay
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
           aria-hidden="false"
         ></iframe>
         <div className="details pt-5 px-3 ">
-          <h1 className="font-semibold  text-2xl  whitespace-nowrap overflow-hidden text-ellipsis ">
-            {videoInfo?.snippet?.localized?.title}
-          </h1>
-          <h1 className="font-medium my-2  text-lg  whitespace-nowrap overflow-hidden text-ellipsis">
-            {videoInfo?.snippet?.channelTitle}
-          </h1>
+          
+          <div>
+            <h1 className="font-semibold  text-2xl  whitespace-nowrap overflow-hidden text-ellipsis ">
+              {videoInfo?.snippet?.localized?.title}
+            </h1>
+            <h1 className="font-medium my-2  text-lg  whitespace-nowrap overflow-hidden text-ellipsis">
+              {videoInfo?.snippet?.channelTitle}
+            </h1>
+          </div>
         </div>
         <div className="w-[100%] border   border-yellow-500 h-[500px] ">
           <CommentSection />

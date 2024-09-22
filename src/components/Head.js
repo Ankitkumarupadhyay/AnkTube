@@ -6,12 +6,14 @@ import { YT_SUGGESTION_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import { videoList } from "../utils/VideoListSlice";
 import { CiSearch } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 const Head = () => {
   const [searchQuerry, setSearchQuerry] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
   const searchCache = useSelector((store) => store.search);
 
@@ -53,17 +55,11 @@ const Head = () => {
     // console.log(json);
     dispatch(videoList(json.items));
   };
-  const handleSuggestionClick = async (e) => {
-    console.log(e);
-    setSearchQuerry(e);
-    // const data = await fetch(
-    //   `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchQuerry}&regionCode=IN&key=AIzaSyBL72bDjA77VV3eYrZQDg0UIXrpimFOGDU`
-    // );
-
-    // const json = await data.json();
-    // // console.log(json);
-    // dispatch(videoList(json.items));
-  };
+  // const handleSuggestionClick = async (e) => {
+  //   console.log(e);
+  //   setSearchQuerry(e);
+   
+  // };
 
   const handleSidebar = () => {
     dispatch(toggleMenu());

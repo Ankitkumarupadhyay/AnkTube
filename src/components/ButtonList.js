@@ -1,4 +1,5 @@
 import React from "react";
+import '../style/scroll.css'
 
 const ButtonList = () => {
   const buttonNameList = [

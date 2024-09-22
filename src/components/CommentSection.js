@@ -64,8 +64,7 @@ const CommentSection = () => {
             className="cursor-pointer rounded-full h-12 "
             src={
               comment?.snippet?.topLevelComment?.snippet
-                ?.authorProfileImageUrl ||
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtRs_rWILOMx5-v3aXwJu7LWUhnPceiKvvDg&s"
+                ?.authorProfileImageUrl || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtRs_rWILOMx5-v3aXwJu7LWUhnPceiKvvDg&s"
             }
             alt="icon"
           />
