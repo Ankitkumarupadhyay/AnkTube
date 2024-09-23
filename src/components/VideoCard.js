@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { timeAgo } from "../utils/time";
+import useChannelInfo from "../utils/useChannelInfo";
 
 const VideoCard = ({ info }) => {
   // console.log(info);
-  const [channelInfo, setChannelInfo] = useState("");
 
   const { snippet, statistics } = info;
   const { channelTitle, localized, thumbnails, publishedAt, channelId } =
     snippet;
+    // console.log(channelId)
 
-  useEffect(() => {
-    fetchChannelData();
-  });
-
-  const fetchChannelData = async () => {
-    const data = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=AIzaSyBL72bDjA77VV3eYrZQDg0UIXrpimFOGDU`
-    );
-
-    const json = await data.json();
-
-    setChannelInfo(json?.items[0]?.snippet?.thumbnails?.default?.url);
-    // console.log(json?.items[0]?.snippet?.thumbnails?.default?.url);
-  };
+  // const channelInfo = useChannelInfo(channelId);
+  // console.log(channelInfo)
 
   return (
     <div className="p-3 m-3 mx-auto w-[290px]  sm:w-[350px]   shadow-xl">
@@ -34,9 +23,10 @@ const VideoCard = ({ info }) => {
       <div className="w-[100%]  flex ">
         <div className="py-3 mr-1  w-14   ">
           <img
-            className="cursor-pointer rounded-full mx-0 h-12 w-12 "
+            className="cursor-pointer object-cover rounded-full mx-0 h-12 w-12 "
             src={
-              channelInfo ||
+              // channelInfo?.snippet?.thumbnails?.default?.url ||
+              thumbnails?.medium?.url ||
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtRs_rWILOMx5-v3aXwJu7LWUhnPceiKvvDg&s"
             }
             alt="icon"

@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 const CommentSection = () => {
   const [comments, setComments] = useState([]);
   const [searchParams] = useSearchParams();
+ 
 
   useEffect(() => {
     fetchComments();
@@ -30,7 +31,7 @@ const CommentSection = () => {
   if (comments.length === 0) return <h1>Loading...</h1>;
 
   return (
-    <div className="px-2  border border-red-700 overflow-y-scroll h-[100%] ">
+    <div className="px-2   overflow-y-scroll h-[100%] ">
       <h1 className="font-bold text-xl my-5 ">Comments : </h1>
       {/* <input
         type="text"
