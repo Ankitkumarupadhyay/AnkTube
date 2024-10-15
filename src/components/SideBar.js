@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { MdOutlineHome } from "react-icons/md";
 import { SiYoutubeshorts } from "react-icons/si";
@@ -29,8 +29,13 @@ import { MdCopyright } from "react-icons/md";
 import '../style/scroll.css'
 
 
+
+
 const SideBar = () => {
+  
   const isOpen = useSelector((store) => store.app.isSidebarOpen);
+
+ 
 
   // Early Return
   if (!isOpen) return null;
@@ -39,7 +44,7 @@ const SideBar = () => {
     <div className="scrollDiv w-48 pb-10 z-30 bg-white fixed h-[90vh] left-0 overflow-y-scroll   border  shadow-2xl py-3 ">
       <ul className="w-[170px]  font-medium border-b border-b-black pl-2 ">
         <Link to={"/"}>
-          <li className="flex items-center gap-3 text-[16px] m-2">
+          <li  className="flex items-center gap-3 text-[16px] m-2">
             <MdOutlineHome size="24px" /> Home
           </li>
         </Link>

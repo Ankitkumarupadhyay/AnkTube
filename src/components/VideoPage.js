@@ -41,11 +41,12 @@ const VideoPage = () => {
   if (videoInfo.length === 0) return;
 
   return (
-    <div className="p-3  b w-[100%]   ">
-      <div className=" w-[100%] lg:w-[67%] ">
+    <div className="   w-[100%]   ">
+      <div className="aspect-video w-[100%] lg:w-[67%] ">
         <iframe
           width="100%"
-          height="500"
+          height="600"
+          
           src={"https://www.youtube.com/embed/" + searchParams.get("v")}
           title="YouTube video player"
           frameBorder="0"
@@ -57,7 +58,7 @@ const VideoPage = () => {
         ></iframe>
         <div className="details pt-5 px-3 ">
           <div>
-            <h1 className="font-semibold  text-2xl  whitespace-nowrap overflow-hidden text-ellipsis ">
+            <h1 className="font-semibold  text-lg sm:text-2xl   ">
               {videoInfo?.snippet?.localized?.title}
             </h1>
           </div>
