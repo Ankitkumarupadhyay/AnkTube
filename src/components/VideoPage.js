@@ -10,7 +10,7 @@ import useChannelInfo from "../utils/useChannelInfo";
 const VideoPage = () => {
   const [videoInfo, setVideoInfo] = useState([]);
   const [searchParams] = useSearchParams();
- 
+
   // console.log(searchParams.get("v"));
 
   // const channelInformation = useChannelInfo(videoInfo?.snippet?.channelId);
@@ -21,7 +21,6 @@ const VideoPage = () => {
   useEffect(() => {
     dispatch(closeMenu());
     fetchData();
-    
   }, []);
 
   const fetchData = async () => {
@@ -35,8 +34,6 @@ const VideoPage = () => {
 
     setVideoInfo(json?.items[0]);
   };
-  
-
 
   if (videoInfo.length === 0) return;
 
@@ -46,8 +43,11 @@ const VideoPage = () => {
         <iframe
           width="100%"
           height="600"
-          
-          src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+          src={
+            "https://www.youtube.com/embed/" +
+            searchParams.get("v") +
+            "?&autoplay=1"
+          }
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
